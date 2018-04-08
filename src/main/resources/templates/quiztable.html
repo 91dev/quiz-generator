@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+    <title>eGMAT Generated Quiz View</title>
+</head>
+<body>
+<div class="container">
+    <h1>eGMAT Generated Quiz after CSV File Upload</h1>
+    <h1><p th:text="${message}"></h1>
+    <table style="width: 50%" class="table-striped">
+    <!--/*@thymesVar id="data" type="java"*/-->
+    <span th:if="${!data.isEmpty()}" th:each="entry : ${data}">
+        <td><h3><p th:text="${entry.key}"></p></h3></td>
+            <tr>
+                <td class="col-md-2" style="width: 29%"><h4>Question Id</h4></td>
+                <td class="col-md-2"><h4>Tag</h4></td>
+                <td class="col-md-4"><h4>Difficulty</h4></td>
+            </tr>
+            <tr th:each="quiz: ${entry.value}">
+                <td class="col-md-2" style="width: 29%"><p th:text="${quiz.questionId}"></p></td>
+                <td class="col-md-2"><p th:text="${quiz.tag}"></p></td>
+                <td class="col-md-4"><p th:text="${quiz.difficulty}"></p></td>
+            </tr>
+    </span>
+    </table>
+</div>
+
+</body>
+</html>

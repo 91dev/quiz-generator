@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+    <title>eGMAT CSV Quiz File Upload</title>
+</head>
+<body>
+<!--/*@thymesVar id="message" type="java"*/-->
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+<div style="
+    margin: 21px;
+"><h3>Please Upload CSV file to generate set of quizzes</h3></div>
+<div class="col-xl-4 col-md-12 mb-r">
+    <form class="md-form" method="POST" enctype="multipart/form-data" action="/upload">
+        <div class="file-field">
+            <a class="btn-floating peach-gradient mt-0 float-left">
+                <i class="fa fa-paperclip" aria-hidden="true"></i>
+                <input type="file" name="file" accept="text/csv">
+            </a>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="submit" value="Upload" style="margin-top: 14px;"placeholder="Upload your file">
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <ul>
+        <li>
+            <!--/*@thymesVar id="file" type="java"*/-->
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>
